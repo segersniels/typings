@@ -1,0 +1,10 @@
+.table {
+  @apply self-end pt-20 text-gray-300;
+
+  border-collapse: separate;
+  border-spacing: 20px 0;
+}
+
+.row {
+  @apply text-right;
+}

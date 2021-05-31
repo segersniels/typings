@@ -1,0 +1,45 @@
+.input {
+  @apply flex-1 rounded p-2 inline-flex px-2 bg-gray-100 w-56;
+  @apply bg-gradient-from
+    bg-gradient-to-tr
+    from-gradient-from
+    to-gradient-to
+    bg-clip-text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.form {
+  @apply flex flex-1 mt-4 self-start;
+}
+
+.inputWrapper {
+  @apply flex
+    bg-gray-100
+    items-center
+    justify-center
+    leading-none
+    rounded-full
+    p-2
+    shadow
+    text-sm
+    h-14;
+}
+
+.span {
+  @apply inline-flex
+    ml-2
+    bg-white
+    rounded-full
+    h-8
+    px-3
+    justify-center
+    items-center;
+  @apply bg-gradient-from
+    bg-gradient-to-tr
+    from-gradient-from
+    to-gradient-to
+    bg-clip-text;
+
+  -webkit-text-fill-color: transparent;
+}

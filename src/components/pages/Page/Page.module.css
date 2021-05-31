@@ -1,0 +1,7 @@
+.container {
+  @apply w-screen h-screen flex flex-col items-center;
+}
+
+.section {
+  @apply flex flex-col max-w-prose w-full px-5;
+}

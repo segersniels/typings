@@ -1,0 +1,32 @@
+.wrapper {
+  @apply bg-gray-100
+    p-6
+    rounded-lg
+    justify-self-center
+    self-center
+    shadow
+    w-full
+    mt-[65%];
+}
+
+.text {
+  @apply inline-block px-1 font-normal text-xl;
+}
+
+.active {
+  @apply font-semibold;
+}
+
+.correct {
+  @apply bg-gradient-from
+    bg-gradient-to-tr
+    from-gradient-from
+    to-gradient-to
+    bg-clip-text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.wrong {
+  @apply line-through;
+}
