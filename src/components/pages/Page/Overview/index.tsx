@@ -1,7 +1,8 @@
-import React, { useCallback } from "react";
+import React, { Fragment, useCallback } from "react";
 import { Word } from "types/Word";
 import styles from "./Overview.module.css";
 import cx from "classnames";
+import ReactTooltip from "react-tooltip";
 
 interface Props {
   words: string[];
@@ -29,16 +30,25 @@ const Overview = (props: Props) => {
   return (
     <div className={styles.wrapper}>
       {words.map((word, idx) => (
-        <p
-          key={idx}
-          className={cx(styles.text, {
-            [styles.active]: currentIndex === idx,
-            [styles.wrong]: wordsMap.has(idx) && !isCorrect(word, idx),
-            [styles.correct]: wordsMap.has(idx) && isCorrect(word, idx),
-          })}
-        >
-          {word}
-        </p>
+        <Fragment key={idx}>
+          {wordsMap.has(idx) && !isCorrect(word, idx) && (
+            <ReactTooltip id={`${idx}`} place="top" type="dark" effect="float">
+              {wordsMap.get(idx).value}
+            </ReactTooltip>
+          )}
+
+          <p
+            className={cx(styles.text, {
+              [styles.active]: currentIndex === idx,
+              [styles.wrong]: wordsMap.has(idx) && !isCorrect(word, idx),
+              [styles.correct]: wordsMap.has(idx) && isCorrect(word, idx),
+            })}
+            data-tip
+            data-for={`${idx}`}
+          >
+            {word}
+          </p>
+        </Fragment>
       ))}
     </div>
   );
