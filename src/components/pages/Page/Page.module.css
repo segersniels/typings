@@ -1,5 +1,5 @@
 .container {
-  @apply w-screen h-screen flex flex-col items-center;
+  @apply w-screen flex flex-col items-center;
 }
 
 .section {
