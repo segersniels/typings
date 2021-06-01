@@ -1,5 +1,6 @@
 import { useCallback, useRef } from "react";
 import { Word } from "types/Word";
+import { emitCustomEvent } from "react-custom-events";
 
 const useWordsPerMinute = () => {
   // Use a ref to mutate since we can't afford to wait for asynchronous state updates
@@ -7,6 +8,7 @@ const useWordsPerMinute = () => {
 
   const reset = useCallback(() => {
     wordsPerMinute.current = 0;
+    emitCustomEvent("reset");
   }, []);
 
   const calculateWordsPerMinute = (words: Word[]) => {

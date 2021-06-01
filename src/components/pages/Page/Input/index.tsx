@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Input.module.css";
 import { useCalculationContext } from "context/CalculationContext";
+import { useCustomEventListener } from "react-custom-events";
 
 interface Props {
   words: string[];
@@ -10,7 +11,7 @@ const Input = (props: Props) => {
   const { words } = props;
 
   const {
-    wordsPerMinute,
+    wordsPerMinute: wpm,
     calculateWordsPerMinute: calculate,
     currentIndex,
     setCurrentIndex,
@@ -22,6 +23,21 @@ const Input = (props: Props) => {
     timer,
     updateScores,
   } = useCalculationContext();
+  const [wordsPerMinute, setWordsPerMinute] = useState(wpm);
+
+  /**
+   * Listen for calculation updates
+   */
+  useEffect(() => {
+    setWordsPerMinute(wpm);
+  }, [wpm]);
+
+  /**
+   * Listen for reset event so we can bypass ref mutation not re-rendering
+   */
+  useCustomEventListener("reset", () => {
+    setWordsPerMinute(0);
+  });
 
   const calculateWordsPerMinute = useCallback(
     (value: string) => {
