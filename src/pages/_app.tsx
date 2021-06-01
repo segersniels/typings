@@ -5,6 +5,7 @@ import { AppProps } from "next/app";
 import React from "react";
 import { CookiesProvider } from "react-cookie";
 import Head from "next/head";
+import { CalculationContextProvider } from "context/CalculationContext";
 
 const title = "typings.space 🚀";
 const description =
@@ -30,7 +31,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <CookiesProvider>
-        <Component {...pageProps} />
+        <CalculationContextProvider>
+          <Component {...pageProps} />
+        </CalculationContextProvider>
       </CookiesProvider>
     </>
   );

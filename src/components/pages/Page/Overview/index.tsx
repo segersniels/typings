@@ -1,47 +1,47 @@
 import React, { Fragment, useCallback } from "react";
-import { Word } from "types/Word";
 import styles from "./Overview.module.css";
 import cx from "classnames";
 import ReactTooltip from "react-tooltip";
+import { useCalculationContext } from "context/CalculationContext";
 
 interface Props {
   words: string[];
-  wordsMap: Map<number, Word>;
-  currentIndex: number;
 }
 
 const Overview = (props: Props) => {
-  const { words, wordsMap, currentIndex } = props;
+  const { words } = props;
+
+  const { currentIndex, status } = useCalculationContext();
 
   /**
    * Check whether to mark the word as correct
    */
   const isCorrect = useCallback(
     (word: string, index: number) => {
-      if (!wordsMap.has(index)) {
+      if (!status.has(index)) {
         return false;
       }
 
-      return wordsMap.get(index).value === word;
+      return status.get(index).value === word;
     },
-    [wordsMap]
+    [status]
   );
 
   return (
     <div className={styles.wrapper}>
       {words.map((word, idx) => (
         <Fragment key={idx}>
-          {wordsMap.has(idx) && !isCorrect(word, idx) && (
+          {status.has(idx) && !isCorrect(word, idx) && (
             <ReactTooltip id={`${idx}`} place="top" type="dark" effect="float">
-              {wordsMap.get(idx).value}
+              {status.get(idx).value}
             </ReactTooltip>
           )}
 
           <p
             className={cx(styles.text, {
               [styles.active]: currentIndex === idx,
-              [styles.wrong]: wordsMap.has(idx) && !isCorrect(word, idx),
-              [styles.correct]: wordsMap.has(idx) && isCorrect(word, idx),
+              [styles.wrong]: status.has(idx) && !isCorrect(word, idx),
+              [styles.correct]: status.has(idx) && isCorrect(word, idx),
             })}
             data-tip
             data-for={`${idx}`}

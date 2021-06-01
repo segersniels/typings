@@ -1,13 +1,12 @@
 import React from "react";
+import { useCookies } from "react-cookie";
 import Score from "types/Score";
 import styles from "./Table.module.css";
 
-interface Props {
-  scores?: Score[];
-}
+const Table = () => {
+  const [cookies] = useCookies(["scores"]);
 
-const Table = ({ scores }: Props) => {
-  if (!scores?.length) {
+  if (!cookies?.scores?.length) {
     return null;
   }
 
@@ -21,7 +20,7 @@ const Table = ({ scores }: Props) => {
       </thead>
 
       <tbody>
-        {scores.map(({ score, timestamp }: Score) => (
+        {cookies.scores.map(({ score, timestamp }: Score) => (
           <tr className={styles.row} key={timestamp}>
             <td>{score}</td>
             <td>{timestamp}</td>
