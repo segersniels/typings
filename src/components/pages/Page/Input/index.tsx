@@ -142,6 +142,7 @@ const Input = (props: Props) => {
             onChange={handleOnChange}
             value={value}
             disabled={isTestDone}
+            autoFocus
           />
         </div>
       </form>
