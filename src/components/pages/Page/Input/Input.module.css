@@ -43,3 +43,7 @@
 
   -webkit-text-fill-color: transparent;
 }
+
+.wrong {
+  @apply bg-pink-100;
+}

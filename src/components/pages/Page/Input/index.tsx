@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Input.module.css";
 import { useCalculationContext } from "context/CalculationContext";
 import { useCustomEventListener } from "react-custom-events";
+import cx from "classnames";
 
 interface Props {
   words: string[];
@@ -141,6 +142,10 @@ const Input = (props: Props) => {
     [currentIndex, setValue, markTestAsDone, words, timer]
   );
 
+  const isCorrect = useCallback(() => {
+    return words[currentIndex].startsWith(value);
+  }, [currentIndex, words, value]);
+
   return (
     <div className={styles.form}>
       <form
@@ -148,7 +153,11 @@ const Input = (props: Props) => {
         onSubmit={(e) => e.preventDefault()}
         autoComplete="off"
       >
-        <div className={styles.inputWrapper}>
+        <div
+          className={cx(styles.inputWrapper, {
+            [styles.wrong]: !isCorrect(),
+          })}
+        >
           <span className={styles.span}>{wordsPerMinute}</span>
 
           <input
