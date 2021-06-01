@@ -29,13 +29,13 @@
 .span {
   @apply inline-flex
     ml-2
-    bg-white
     rounded-full
     h-8
     px-3
     justify-center
-    items-center;
-  @apply bg-gradient-from
+    items-center
+    font-bold
+    bg-gradient-from
     bg-gradient-to-tr
     from-gradient-from
     to-gradient-to
