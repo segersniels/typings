@@ -1,7 +1,5 @@
-import React, { useCallback, useState } from "react";
-import { useCookies } from "react-cookie";
+import React, { useCallback } from "react";
 import styles from "./Input.module.css";
-import Score from "types/Score";
 import { useCalculationContext } from "context/CalculationContext";
 
 interface Props {
