@@ -15,7 +15,7 @@ const Input = (props: Props) => {
 
   return (
     <div className={styles.form}>
-      <form className="flex">
+      <form className="flex" onSubmit={(e) => e.preventDefault()}>
         <div className={styles.inputWrapper}>
           <span className={styles.span}>{wordsPerMinute}</span>
 
