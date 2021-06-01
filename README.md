@@ -11,4 +11,9 @@ typings.space is a simplistic interpretation of a pleasing typing test 👋
 
 ## Calculation of WPM
 
-The current calculation checks how many correct words were typed over the period of all typed words (incl. incorrect ones). Unsure if I should factor in the length of words. If you have suggestions on how to improve the calculation feel free to create a PR or create an issue.
+The current calculation assumes that the average word is 5 characters long. This causes longer words to be weighted more than eg. typing _my_.
+
+So this roughly translated to the following equation:
+- Filter correct words
+- All the characters of all correct words are divided by 5 to get a weighted word count
+- This is then divided by the total time spent typing all of the words (incl. incorrect words)
