@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useInterval from "./useInterval";
 
-const useStopwatch = () => {
+const useTimer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -29,4 +29,4 @@ const useStopwatch = () => {
   };
 };
 
-export default useStopwatch;
+export default useTimer;
