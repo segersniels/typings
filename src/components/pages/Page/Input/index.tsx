@@ -11,8 +11,6 @@ interface Props {
 const Input = (props: Props) => {
   const { words } = props;
 
-  const [cookies, setCookie] = useCookies(["scores"]);
-  const [isCookieUpdated, setIsCookieUpdated] = useState(false);
   const {
     wordsPerMinute,
     calculateWordsPerMinute: calculate,
@@ -24,6 +22,7 @@ const Input = (props: Props) => {
     current: value,
     setCurrent: setValue,
     timer,
+    updateScores,
   } = useCalculationContext();
 
   const calculateWordsPerMinute = useCallback(
@@ -38,7 +37,7 @@ const Input = (props: Props) => {
       // Force recalculation
       return calculate(Array.from(status.values()));
     },
-    [calculate, currentIndex, status, timer, words]
+    [calculate, currentIndex, status, timer.seconds, words]
   );
 
   const markTestAsDone = useCallback(
@@ -51,34 +50,10 @@ const Input = (props: Props) => {
       // Stop the timer and update the cookie with the final score
       timer.reset();
 
-      if (isCookieUpdated) {
-        return;
-      }
-
-      const scores: Score[] = cookies.scores ?? [];
-
-      // Only keep the last 10 items in storage
-      if (scores.length >= 10) {
-        scores.pop();
-      }
-
-      scores.unshift({
-        score,
-        timestamp: new Date().toLocaleString(),
-      });
-
-      setCookie("scores", JSON.stringify(scores), { path: "/" });
-
-      setIsCookieUpdated(true);
+      // Update cookie with updated score
+      updateScores(score);
     },
-    [
-      cookies,
-      isCookieUpdated,
-      timer,
-      setCookie,
-      calculateWordsPerMinute,
-      setIsTestDone,
-    ]
+    [timer, calculateWordsPerMinute, setIsTestDone, updateScores]
   );
 
   const handleKeyPress = useCallback(

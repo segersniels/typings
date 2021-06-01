@@ -42,7 +42,7 @@ export const CalculationContextProvider = (props: Props) => {
     reset: resetCalculation,
   } = useWordsPerMinute();
   const [cookies, setCookie] = useCookies(["scores"]);
-  const { seconds, isRunning, start, reset } = useTimer();
+  const timer = useTimer();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCookieUpdated, setIsCookieUpdated] = useState(false);
@@ -86,12 +86,7 @@ export const CalculationContextProvider = (props: Props) => {
         status,
         current,
         setCurrent,
-        timer: {
-          seconds,
-          isRunning,
-          start,
-          reset,
-        },
+        timer,
       }}
     >
       {children}
