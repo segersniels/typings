@@ -1,6 +1,10 @@
 .input {
-  @apply flex-1 rounded p-2 inline-flex px-2 bg-gray-100 w-56;
-  @apply bg-gradient-from
+  @apply flex-1
+    rounded
+    p-2
+    inline-flex
+    bg-gray-100 w-56
+    bg-gradient-from
     bg-gradient-to-tr
     from-gradient-from
     to-gradient-to
@@ -10,7 +14,10 @@
 }
 
 .form {
-  @apply flex flex-1 mt-4 self-start;
+  @apply flex
+    flex-1
+    my-4
+    self-start;
 }
 
 .inputWrapper {

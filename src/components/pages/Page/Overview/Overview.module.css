@@ -4,7 +4,9 @@
     rounded-lg
     shadow
     w-full
-    mt-24;
+    self-center
+    justify-self-center
+    mt-[25vh];
 }
 
 .text {
@@ -27,10 +29,4 @@
 
 .wrong {
   @apply line-through;
-}
-
-@screen md {
-  .wrapper {
-    @apply mt-[65%];
-  }
 }

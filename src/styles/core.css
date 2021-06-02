@@ -12,10 +12,6 @@ html {
   box-sizing: inherit;
 }
 
-ul {
-  @apply list-inside list-none;
-}
-
 input,
 textarea,
 button,
@@ -37,7 +33,7 @@ body,
 }
 
 [id="__next"] {
-  @apply h-auto min-h-full flex flex-col overflow-hidden text-black;
+  @apply min-h-full flex flex-col overflow-hidden text-black;
 
   font-family:
     -apple-system,

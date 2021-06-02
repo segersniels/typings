@@ -1,5 +1,10 @@
 .container {
-  @apply w-screen flex flex-col items-center;
+  @apply h-full
+    w-screen
+    flex
+    flex-col
+    items-center
+    overflow-scroll;
 }
 
 .section {
