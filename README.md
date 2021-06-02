@@ -2,7 +2,9 @@
 
 typings.space is a simplistic interpretation of a pleasing typing test 👋
 
-![preview](./resources/preview.png)
+<p align="center">
+  <img src="./resources/preview.png" alt="preview">
+</p>
 
 ## Features
 
