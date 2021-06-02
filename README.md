@@ -2,6 +2,8 @@
 
 typings.space is a simplistic interpretation of a pleasing typing test 👋
 
+![preview](./resources/preview.png)
+
 ## Features
 
 - Pressing ESC (escape) resets the entire test
