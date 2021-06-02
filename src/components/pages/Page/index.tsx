@@ -1,3 +1,4 @@
+import Footer from "components/Footer";
 import { useCalculationContext } from "context/CalculationContext";
 import useKeyPressed from "hooks/useKeyPressed";
 import randomWords from "random-words";
@@ -70,6 +71,8 @@ const Page = () => {
       <section className={styles.section}>
         <Table />
       </section>
+
+      <Footer />
     </div>
   );
 };

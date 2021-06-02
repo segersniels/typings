@@ -6,7 +6,7 @@
     w-full
     self-center
     justify-self-center
-    mt-[25vh];
+    mt-6;
 }
 
 .text {
@@ -29,4 +29,10 @@
 
 .wrong {
   @apply line-through;
+}
+
+@screen md {
+  .wrapper {
+    @apply mt-[25vh];
+  }
 }
