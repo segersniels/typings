@@ -1,6 +1,7 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 import Score from "types/Score";
+
 import styles from "./Table.module.css";
 
 const Table = () => {

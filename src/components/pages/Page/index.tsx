@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import styles from "./Page.module.css";
-import randomWords from "random-words";
+import { useCalculationContext } from "context/CalculationContext";
 import useKeyPressed from "hooks/useKeyPressed";
-import Table from "./Table";
+import randomWords from "random-words";
+import React, { useEffect, useState } from "react";
+
 import Input from "./Input";
 import Overview from "./Overview";
-import { useCalculationContext } from "context/CalculationContext";
+import styles from "./Page.module.css";
+import Table from "./Table";
 
 // TODO: Make configurable
 const WORD_COUNT = 50;

@@ -4,7 +4,7 @@ module.exports = {
     node: true,
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "simple-import-sort"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -15,5 +15,10 @@ module.exports = {
     react: {
       version: "detect",
     },
+  },
+  rules: {
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
   },
 };

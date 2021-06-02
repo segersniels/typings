@@ -1,8 +1,9 @@
-import React, { Fragment, useCallback } from "react";
-import styles from "./Overview.module.css";
 import cx from "classnames";
-import ReactTooltip from "react-tooltip";
 import { useCalculationContext } from "context/CalculationContext";
+import React, { Fragment, useCallback } from "react";
+import ReactTooltip from "react-tooltip";
+
+import styles from "./Overview.module.css";
 
 interface Props {
   words: string[];

@@ -1,9 +1,9 @@
-import React, { useContext, useMemo, useState } from "react";
+import useTimer from "hooks/useTimer";
 import useWordsPerMinute from "hooks/useWordsPerMinute";
-import { Word } from "types/Word";
+import React, { useContext, useMemo, useState } from "react";
 import { useCookies } from "react-cookie";
 import Score from "types/Score";
-import useTimer from "hooks/useTimer";
+import { Word } from "types/Word";
 
 interface ContextType {
   wordsPerMinute: number;

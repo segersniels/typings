@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
-import styles from "./Input.module.css";
-import { useCalculationContext } from "context/CalculationContext";
-import { useCustomEventListener } from "react-custom-events";
 import cx from "classnames";
+import { useCalculationContext } from "context/CalculationContext";
+import React, { useCallback, useEffect, useState } from "react";
+import { useCustomEventListener } from "react-custom-events";
+
+import styles from "./Input.module.css";
 
 interface Props {
   words: string[];

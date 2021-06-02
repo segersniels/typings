@@ -1,11 +1,11 @@
 import "styles/global.css";
 import "styles/core.css";
 
+import { CalculationContextProvider } from "context/CalculationContext";
 import { AppProps } from "next/app";
+import Head from "next/head";
 import React from "react";
 import { CookiesProvider } from "react-cookie";
-import Head from "next/head";
-import { CalculationContextProvider } from "context/CalculationContext";
 
 const title = "typings.space 🚀";
 const description =
