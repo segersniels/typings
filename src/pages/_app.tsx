@@ -9,7 +9,7 @@ import { CalculationContextProvider } from "context/CalculationContext";
 
 const title = "typings.space 🚀";
 const description =
-  "typings.space is a simplistic interpretation of a pleasing typing test 👋";
+  "Want to test out that new keyboard you just built? typings.space is a simplistic interpretation of a pleasing typing speed test 👋";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
