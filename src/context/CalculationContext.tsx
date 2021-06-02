@@ -66,7 +66,14 @@ export const CalculationContextProvider = (props: Props) => {
       timestamp: new Date().toLocaleString(),
     });
 
-    setCookie("scores", JSON.stringify(scores), { path: "/" });
+    // Set the cookie expiration date to a year from now
+    const expirationDate = new Date();
+    expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+
+    setCookie("scores", JSON.stringify(scores), {
+      path: "/",
+      expires: expirationDate,
+    });
 
     setIsCookieUpdated(true);
   };
