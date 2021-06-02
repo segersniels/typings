@@ -148,33 +148,31 @@ const Input = (props: Props) => {
   }, [currentIndex, words, value]);
 
   return (
-    <div className={styles.form}>
-      <form
-        className="flex"
-        onSubmit={(e) => e.preventDefault()}
-        autoComplete="off"
+    <form
+      className={styles.form}
+      onSubmit={(e) => e.preventDefault()}
+      autoComplete="off"
+    >
+      <div
+        className={cx(styles.wrapper, {
+          [styles.wrong]: !isCorrect(),
+        })}
       >
-        <div
-          className={cx(styles.inputWrapper, {
-            [styles.wrong]: !isCorrect(),
-          })}
-        >
-          <span className={styles.span}>{wordsPerMinute}</span>
+        <span className={styles.span}>{wordsPerMinute}</span>
 
-          <input
-            className={styles.input}
-            id="text"
-            type="text"
-            placeholder="Type here to start the test"
-            onKeyPress={handleKeyPress}
-            onChange={handleOnChange}
-            value={value}
-            disabled={isTestDone}
-            autoFocus
-          />
-        </div>
-      </form>
-    </div>
+        <input
+          className={styles.input}
+          id="text"
+          type="text"
+          placeholder="Type here to start the test"
+          onKeyPress={handleKeyPress}
+          onChange={handleOnChange}
+          value={value}
+          disabled={isTestDone}
+          autoFocus
+        />
+      </div>
+    </form>
   );
 };
 

@@ -1,12 +1,13 @@
 .form {
   @apply flex
-    flex-1
+    w-full
     my-4
     self-start;
 }
 
-.inputWrapper {
+.wrapper {
   @apply flex
+    w-full
     bg-gray-100
     items-center
     justify-center
@@ -22,7 +23,7 @@
     rounded-full
     ml-2
     px-3
-    text-lg
+    text-base
     justify-center
     font-bold
     items-center
@@ -40,7 +41,8 @@
     rounded
     p-2
     inline-flex
-    bg-gray-100 w-56
+    text-base
+    w-full
     bg-gradient-from
     bg-gradient-to-tr
     from-gradient-from
@@ -52,4 +54,15 @@
 
 .wrong {
   @apply bg-pink-100;
+}
+
+@screen md {
+  .wrapper {
+    @apply w-[50%];
+  }
+
+  .input,
+  .span {
+    @apply text-lg;
+  }
 }
