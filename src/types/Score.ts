@@ -1,6 +1,6 @@
 interface Score {
   score: number;
-  timestamp: string;
+  timestamp: number;
 }
 
 export default Score;

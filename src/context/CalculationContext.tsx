@@ -63,7 +63,7 @@ export const CalculationContextProvider = (props: Props) => {
 
     scores.unshift({
       score,
-      timestamp: new Date().toLocaleString(),
+      timestamp: new Date().valueOf(),
     });
 
     // Set the cookie expiration date to a year from now

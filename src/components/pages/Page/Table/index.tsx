@@ -23,7 +23,7 @@ const Table = () => {
         {cookies.scores.map(({ score, timestamp }: Score) => (
           <tr className={styles.row} key={timestamp}>
             <td>{score}</td>
-            <td>{timestamp}</td>
+            <td>{new Date(timestamp).toLocaleString()}</td>
           </tr>
         ))}
       </tbody>
