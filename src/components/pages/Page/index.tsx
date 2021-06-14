@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
 
 import Count from "./Count";
+import Highscore from "./Highscore";
 import Input from "./Input";
 import Overview from "./Overview";
 import styles from "./Page.module.css";
@@ -85,10 +86,15 @@ const Page = () => {
 
   return (
     <div className={styles.container}>
-      <Count />
+      <div className={styles.top}>
+        <Highscore />
+        <Count />
+      </div>
+
       <Overview words={words} />
       <Input words={words} />
       <Table className={styles.table} />
+
       <Footer />
     </div>
   );

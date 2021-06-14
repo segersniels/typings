@@ -1,0 +1,11 @@
+.score {
+  @apply font-bold
+    inline
+    bg-gradient-from
+    bg-gradient-to-tr
+    from-gradient-from
+    to-gradient-to
+    bg-clip-text;
+
+  -webkit-text-fill-color: transparent;
+}

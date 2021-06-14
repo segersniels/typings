@@ -16,5 +16,14 @@
 .table {
   @apply flex
     flex-col
-    flex-1;
+    flex-1
+    items-end;
+}
+
+.top {
+  @apply flex
+    flex-1
+    content-between
+    items-end
+    mb-1;
 }

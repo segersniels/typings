@@ -78,6 +78,14 @@ export const CalculationContextProvider = (props: Props) => {
       expires: expirationDate,
     });
 
+    // Update highscore if higher
+    if (score > (cookies.highscore ?? 0)) {
+      setCookie("highscore", score, {
+        path: "/",
+        expires: expirationDate,
+      });
+    }
+
     setIsCookieUpdated(true);
   };
 

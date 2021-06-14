@@ -1,10 +1,9 @@
 .table {
-  @apply self-end
-    text-gray-300
+  @apply text-gray-300
     w-2/4;
 
   border-collapse: separate;
-  border-spacing: 20px 0;
+  border-spacing: 1.25rem 0;
 }
 
 .row {
