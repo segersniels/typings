@@ -24,6 +24,8 @@ interface ContextType {
     start: () => void;
     reset: () => void;
   };
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const CalculationContext = React.createContext<ContextType | null>(null);
@@ -48,6 +50,7 @@ export const CalculationContextProvider = (props: Props) => {
   const [isCookieUpdated, setIsCookieUpdated] = useState(false);
   const [isTestDone, setIsTestDone] = useState(false);
   const [current, setCurrent] = useState("");
+  const [count, setCount] = useState(50);
 
   const updateScores = (score: number) => {
     if (isCookieUpdated) {
@@ -94,6 +97,8 @@ export const CalculationContextProvider = (props: Props) => {
         current,
         setCurrent,
         timer,
+        count,
+        setCount,
       }}
     >
       {children}

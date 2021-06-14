@@ -1,5 +1,7 @@
 .table {
-  @apply self-end pt-20 text-gray-300;
+  @apply self-end
+    text-gray-300
+    w-2/4;
 
   border-collapse: separate;
   border-spacing: 20px 0;

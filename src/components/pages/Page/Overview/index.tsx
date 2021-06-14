@@ -29,7 +29,7 @@ const Overview = (props: Props) => {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.container}>
       {words.map((word, idx) => (
         <Fragment key={idx}>
           {status.has(idx) && !isCorrect(word, idx) && (

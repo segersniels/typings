@@ -1,12 +1,20 @@
 .container {
   @apply h-full
-    w-screen
+    self-center
     flex
     flex-col
-    items-center
-    overflow-scroll;
+    w-3/12;
 }
 
 .section {
-  @apply flex flex-col max-w-prose w-full px-5;
+  @apply flex
+    max-w-prose
+    w-full
+    px-5;
+}
+
+.table {
+  @apply flex
+    flex-col
+    flex-1;
 }

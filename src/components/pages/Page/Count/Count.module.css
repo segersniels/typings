@@ -1,0 +1,23 @@
+.container {
+  @apply flex
+    flex-1
+    items-end
+    justify-end
+    w-full;
+}
+
+.label {
+  @apply mx-1
+    cursor-pointer;
+}
+
+.active {
+  @apply bg-gradient-from
+    bg-gradient-to-tr
+    from-gradient-from
+    to-gradient-to
+    bg-clip-text
+    font-semibold;
+
+  -webkit-text-fill-color: transparent;
+}

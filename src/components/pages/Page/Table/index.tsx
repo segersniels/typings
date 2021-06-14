@@ -4,7 +4,9 @@ import Score from "types/Score";
 
 import styles from "./Table.module.css";
 
-const Table = () => {
+type Props = Partial<HTMLTableElement>;
+
+const Table = (props: Props) => {
   const [cookies] = useCookies(["scores"]);
 
   if (!cookies?.scores?.length) {
@@ -12,23 +14,25 @@ const Table = () => {
   }
 
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr className={styles.row}>
-          <th>Score</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {cookies.scores.map(({ score, timestamp }: Score) => (
-          <tr className={styles.row} key={timestamp}>
-            <td>{score}</td>
-            <td>{new Date(timestamp).toLocaleString()}</td>
+    <div className={props.className}>
+      <table className={styles.table}>
+        <thead>
+          <tr className={styles.row}>
+            <th>Score</th>
+            <th>Date</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          {cookies.scores.map(({ score, timestamp }: Score) => (
+            <tr className={styles.row} key={timestamp}>
+              <td>{score}</td>
+              <td>{new Date(timestamp).toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

@@ -1,20 +1,18 @@
+import usePrevious from "@rooks/use-previous";
 import Footer from "components/Footer";
 import { useCalculationContext } from "context/CalculationContext";
 import useKeyPressed from "hooks/useKeyPressed";
 import randomWords from "random-words";
 import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
 
+import Count from "./Count";
 import Input from "./Input";
 import Overview from "./Overview";
 import styles from "./Page.module.css";
 import Table from "./Table";
 
-// TODO: Make configurable
-const WORD_COUNT = 50;
-
 const Page = () => {
-  const [words, setWords] = useState(randomWords(WORD_COUNT));
-
   const {
     resetCalculation,
     currentIndex,
@@ -24,12 +22,12 @@ const Page = () => {
     status,
     setCurrent,
     timer,
+    count,
   } = useCalculationContext();
+  const [words, setWords] = useState(randomWords(count));
+  const previousCount = usePrevious(count);
 
-  /**
-   * Keep track when user presses ESC so we can reset the typing test
-   */
-  useKeyPressed(() => {
+  const reset = useCallback(() => {
     // Clear input field and current progress
     setCurrent("");
     setCurrentIndex(0);
@@ -38,14 +36,41 @@ const Page = () => {
     timer.reset();
 
     // Regenerate words
-    setWords(randomWords(WORD_COUNT));
+    setWords(randomWords(count));
 
     // Allow cookie to be set again
     setIsCookieUpdated(false);
 
     // Finally mark test as not done
     setIsTestDone(false);
+  }, [
+    count,
+    resetCalculation,
+    setCurrent,
+    setCurrentIndex,
+    setIsCookieUpdated,
+    setIsTestDone,
+    status,
+    timer,
+  ]);
+
+  /**
+   * Keep track when user presses ESC so we can reset the typing test
+   */
+  useKeyPressed(() => {
+    reset();
   }, 27);
+
+  /**
+   * Update words when adjusting word count
+   */
+  useEffect(() => {
+    if (count === previousCount) {
+      return;
+    }
+
+    reset();
+  }, [reset, count, previousCount]);
 
   /**
    * Prevent index from drifting
@@ -60,18 +85,10 @@ const Page = () => {
 
   return (
     <div className={styles.container}>
-      <section className={styles.section}>
-        <Overview words={words} />
-      </section>
-
-      <section className={styles.section}>
-        <Input words={words} />
-      </section>
-
-      <section className={styles.section}>
-        <Table />
-      </section>
-
+      <Count />
+      <Overview words={words} />
+      <Input words={words} />
+      <Table className={styles.table} />
       <Footer />
     </div>
   );
