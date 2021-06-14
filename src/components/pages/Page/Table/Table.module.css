@@ -1,6 +1,5 @@
 .table {
-  @apply text-gray-300
-    w-2/4;
+  @apply text-gray-300;
 
   border-collapse: separate;
   border-spacing: 1.25rem 0;

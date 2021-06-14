@@ -3,14 +3,7 @@
     self-center
     flex
     flex-col
-    w-3/12;
-}
-
-.section {
-  @apply flex
-    max-w-prose
-    w-full
-    px-5;
+    w-11/12;
 }
 
 .table {
@@ -22,8 +15,25 @@
 
 .top {
   @apply flex
-    flex-1
     content-between
     items-end
+    mt-3
     mb-1;
+}
+
+@screen md {
+  .container {
+    @apply w-[75%];
+  }
+
+  .top {
+    @apply flex-1
+      mt-0;
+  }
+}
+
+@screen lg {
+  .container {
+    @apply w-[27%];
+  }
 }

@@ -29,11 +29,13 @@ select {
 html,
 body,
 [id="__next"] {
-  @apply h-full w-full;
-}
-
-[id="__next"] {
-  @apply min-h-full flex flex-col overflow-hidden text-black;
+  @apply flex
+    flex-col
+    h-full
+    w-full
+    overflow-x-hidden
+    overflow-y-auto
+    text-black;
 
   font-family:
     -apple-system,
