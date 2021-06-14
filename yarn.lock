@@ -328,6 +328,11 @@
   resolved "https://registry.yarnpkg.com/@rooks/use-did-mount/-/use-did-mount-4.11.2.tgz#b0d33be4eda3423292c25d3df3dca0eefd57f83f"
   integrity sha512-tWveQghpRI2ioRczJn3EfMqNVJjXmwIze3fEAPufCkOUTPz/5UsncrSF1LYkfkNPr6QKFKVMyINWdFpuF0HS4Q==
 
+"@rooks/use-previous@^4.11.2":
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@rooks/use-previous/-/use-previous-4.11.2.tgz#96465fe659005222a7c5751e7c6ad89d9acf9cd7"
+  integrity sha512-hZFDm5NPleSANTbDaQfrwWH6XSYElEToee7KC1fu38BqI09XzWCjjPPUak+4P6otTArgudFyuX8SiA4C28Tacw==
+
 "@stylelint/postcss-css-in-js@^0.37.2":
   version "0.37.2"
   resolved "https://registry.yarnpkg.com/@stylelint/postcss-css-in-js/-/postcss-css-in-js-0.37.2.tgz#7e5a84ad181f4234a2480803422a47b8749af3d2"
