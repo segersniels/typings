@@ -10,7 +10,7 @@ import Highscore from "./Highscore";
 import styles from "./Home.module.css";
 import Input from "./Input";
 import Overview from "./Overview";
-import Table from "./Table";
+import Scores from "./Scores";
 
 const Page = () => {
   const {
@@ -94,7 +94,7 @@ const Page = () => {
 
       <Overview />
       <Input />
-      <Table className={styles.table} />
+      <Scores className={styles.table} />
 
       <Footer />
     </div>
