@@ -1,6 +1,8 @@
 import useTimer from "hooks/useTimer";
 import useWordsPerMinute from "hooks/useWordsPerMinute";
+import randomWords from "random-words";
 import React, { useContext, useMemo, useState } from "react";
+import { useCallback } from "react";
 import { useCookies } from "react-cookie";
 import Highscore from "types/Highscore";
 import Score from "types/Score";
@@ -27,6 +29,8 @@ interface ContextType {
   };
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
+  words: string[];
+  generateWords: (count: number) => void;
 }
 
 const CalculationContext = React.createContext<ContextType | null>(null);
@@ -52,6 +56,11 @@ export const CalculationContextProvider = (props: Props) => {
   const [isTestDone, setIsTestDone] = useState(false);
   const [current, setCurrent] = useState("");
   const [count, setCount] = useState(50);
+  const [words, setWords] = useState(randomWords(count));
+
+  const generateWords = useCallback((count: number) => {
+    setWords(randomWords(count));
+  }, []);
 
   const updateScores = (score: number, count: number) => {
     if (isCookieUpdated) {
@@ -112,6 +121,8 @@ export const CalculationContextProvider = (props: Props) => {
         timer,
         count,
         setCount,
+        words,
+        generateWords,
       }}
     >
       {children}

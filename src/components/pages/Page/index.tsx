@@ -2,8 +2,7 @@ import usePrevious from "@rooks/use-previous";
 import Footer from "components/Footer";
 import { useCalculationContext } from "context/CalculationContext";
 import useKeyPressed from "hooks/useKeyPressed";
-import randomWords from "random-words";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useCallback } from "react";
 
 import Count from "./Count";
@@ -24,8 +23,9 @@ const Page = () => {
     setCurrent,
     timer,
     count,
+    words,
+    generateWords,
   } = useCalculationContext();
-  const [words, setWords] = useState(randomWords(count));
   const previousCount = usePrevious(count);
 
   const reset = useCallback(() => {
@@ -37,7 +37,7 @@ const Page = () => {
     timer.reset();
 
     // Regenerate words
-    setWords(randomWords(count));
+    generateWords(count);
 
     // Allow cookie to be set again
     setIsCookieUpdated(false);
@@ -53,6 +53,7 @@ const Page = () => {
     setIsTestDone,
     status,
     timer,
+    generateWords,
   ]);
 
   /**
@@ -91,8 +92,8 @@ const Page = () => {
         <Count />
       </div>
 
-      <Overview words={words} />
-      <Input words={words} />
+      <Overview />
+      <Input />
       <Table className={styles.table} />
 
       <Footer />

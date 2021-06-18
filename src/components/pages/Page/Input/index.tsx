@@ -5,13 +5,7 @@ import { useCustomEventListener } from "react-custom-events";
 
 import styles from "./Input.module.css";
 
-interface Props {
-  words: string[];
-}
-
-const Input = (props: Props) => {
-  const { words } = props;
-
+const Input = () => {
   const {
     wordsPerMinute: wpm,
     calculateWordsPerMinute: calculate,
@@ -25,6 +19,7 @@ const Input = (props: Props) => {
     timer,
     updateScores,
     count,
+    words,
   } = useCalculationContext();
   const [wordsPerMinute, setWordsPerMinute] = useState(wpm);
 

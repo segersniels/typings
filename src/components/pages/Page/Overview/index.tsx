@@ -5,14 +5,8 @@ import ReactTooltip from "react-tooltip";
 
 import styles from "./Overview.module.css";
 
-interface Props {
-  words: string[];
-}
-
-const Overview = (props: Props) => {
-  const { words } = props;
-
-  const { currentIndex, status } = useCalculationContext();
+const Overview = () => {
+  const { currentIndex, status, words } = useCalculationContext();
 
   /**
    * Check whether to mark the word as correct
