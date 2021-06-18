@@ -7,9 +7,9 @@ import { useCallback } from "react";
 
 import Count from "./Count";
 import Highscore from "./Highscore";
+import styles from "./Home.module.css";
 import Input from "./Input";
 import Overview from "./Overview";
-import styles from "./Page.module.css";
 import Table from "./Table";
 
 const Page = () => {
