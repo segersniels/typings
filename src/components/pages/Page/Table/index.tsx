@@ -19,14 +19,16 @@ const Table = (props: Props) => {
         <thead>
           <tr className={styles.row}>
             <th>Score</th>
+            <th>Count</th>
             <th>Date</th>
           </tr>
         </thead>
 
         <tbody>
-          {cookies.scores.map(({ score, timestamp }: Score) => (
+          {cookies.scores.map(({ score, count, timestamp }: Score) => (
             <tr className={styles.row} key={timestamp}>
               <td>{score}</td>
+              <td>{count ?? 50}</td>
               <td>{new Date(timestamp).toLocaleString()}</td>
             </tr>
           ))}

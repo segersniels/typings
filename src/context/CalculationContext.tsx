@@ -2,6 +2,7 @@ import useTimer from "hooks/useTimer";
 import useWordsPerMinute from "hooks/useWordsPerMinute";
 import React, { useContext, useMemo, useState } from "react";
 import { useCookies } from "react-cookie";
+import Highscore from "types/Highscore";
 import Score from "types/Score";
 import { Word } from "types/Word";
 
@@ -11,7 +12,7 @@ interface ContextType {
   resetCalculation: () => void;
   currentIndex: number;
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
-  updateScores: (score: number) => void;
+  updateScores: (score: number, count: number) => void;
   setIsCookieUpdated: React.Dispatch<React.SetStateAction<boolean>>;
   isTestDone: boolean;
   setIsTestDone: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,7 +53,7 @@ export const CalculationContextProvider = (props: Props) => {
   const [current, setCurrent] = useState("");
   const [count, setCount] = useState(50);
 
-  const updateScores = (score: number) => {
+  const updateScores = (score: number, count: number) => {
     if (isCookieUpdated) {
       return;
     }
@@ -66,6 +67,7 @@ export const CalculationContextProvider = (props: Props) => {
 
     scores.unshift({
       score,
+      count,
       timestamp: new Date().valueOf(),
     });
 
@@ -78,9 +80,12 @@ export const CalculationContextProvider = (props: Props) => {
       expires: expirationDate,
     });
 
+    const highscores: Highscore = cookies.highscores ?? {};
+
     // Update highscore if higher
-    if (score > (cookies.highscore ?? 0)) {
-      setCookie("highscore", score, {
+    if (score > (highscores[count] ?? 0)) {
+      highscores[count] = score;
+      setCookie("highscores", JSON.stringify(highscores), {
         path: "/",
         expires: expirationDate,
       });

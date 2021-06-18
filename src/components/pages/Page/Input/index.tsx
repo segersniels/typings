@@ -24,6 +24,7 @@ const Input = (props: Props) => {
     setCurrent: setValue,
     timer,
     updateScores,
+    count,
   } = useCalculationContext();
   const [wordsPerMinute, setWordsPerMinute] = useState(wpm);
 
@@ -67,9 +68,9 @@ const Input = (props: Props) => {
       timer.reset();
 
       // Update cookie with updated score
-      updateScores(score);
+      updateScores(score, count);
     },
-    [timer, calculateWordsPerMinute, setIsTestDone, updateScores]
+    [timer, calculateWordsPerMinute, setIsTestDone, updateScores, count]
   );
 
   const handleKeyPress = useCallback(
