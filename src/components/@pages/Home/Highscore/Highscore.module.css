@@ -1,3 +1,11 @@
+.container {
+  @apply inline-flex;
+}
+
+.text {
+  @apply mr-1;
+}
+
 .score {
   @apply font-bold
     inline

@@ -9,11 +9,9 @@ const Table = () => {
   const { count } = useCalculationContext();
 
   return (
-    <div>
-      <p className={styles.text}>
-        Highest Score:{" "}
-        <p className={styles.score}>{cookies.highscores?.[count] ?? 0}</p>
-      </p>
+    <div className={styles.container}>
+      <p className={styles.text}>Highest Score:</p>
+      <p className={styles.score}>{cookies.highscores?.[count] ?? 0}</p>
     </div>
   );
 };
