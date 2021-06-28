@@ -2,6 +2,7 @@ import "styles/global.css";
 import "styles/core.css";
 
 import { CalculationContextProvider } from "context/CalculationContext";
+import { MigrationContextProvider } from "context/MigrationContext";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React from "react";
@@ -31,9 +32,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <CookiesProvider>
-        <CalculationContextProvider>
-          <Component {...pageProps} />
-        </CalculationContextProvider>
+        <MigrationContextProvider>
+          <CalculationContextProvider>
+            <Component {...pageProps} />
+          </CalculationContextProvider>
+        </MigrationContextProvider>
       </CookiesProvider>
     </>
   );

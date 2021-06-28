@@ -1,6 +1,7 @@
 import usePrevious from "@rooks/use-previous";
 import Footer from "components/Footer";
 import { useCalculationContext } from "context/CalculationContext";
+import { useMigrationContext } from "context/MigrationContext";
 import useKeyPressed from "hooks/useKeyPressed";
 import React, { useEffect } from "react";
 import { useCallback } from "react";
@@ -13,6 +14,7 @@ import Input from "./Input";
 import Overview from "./Overview";
 
 const Page = () => {
+  const { isMigrated } = useMigrationContext();
   const {
     resetCalculation,
     currentIndex,
@@ -84,6 +86,10 @@ const Page = () => {
 
     setCurrentIndex(words.length - 1);
   }, [setCurrentIndex, words, currentIndex]);
+
+  if (!isMigrated) {
+    return null;
+  }
 
   return (
     <div className={styles.container}>
