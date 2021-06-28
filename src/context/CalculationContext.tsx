@@ -68,11 +68,17 @@ export const CalculationContextProvider = (props: Props) => {
 
     const scores: Record<number, Score[]> = cookies.scores ?? {};
 
+    // Keep track of scores we haven't had any scores for
+    if (!scores[count]) {
+      scores[count] = [];
+    }
+
     // Only keep the last 10 items in storage
     if (scores[count]?.length >= 10) {
       scores[count].pop();
     }
 
+    // Add the score to the start of the list
     scores[count].unshift({
       score,
       count,
