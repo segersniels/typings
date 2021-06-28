@@ -1,34 +1,50 @@
 .container {
-  @apply h-full
-    self-center
-    flex
+  @apply flex
     flex-col
+    self-center
+    mx-auto
     w-11/12;
 }
 
 .table {
   @apply flex
     flex-col
-    flex-1
     items-end;
 }
 
 .top {
-  @apply flex
-    content-between
+  @apply inline-flex
     items-end
-    mt-3
-    mb-1;
+    mb-2;
+}
+
+.chart {
+  @apply h-52
+    w-full;
+
+  & text {
+    @apply font-light
+      italic;
+
+    font-family:
+      -apple-system,
+      BlinkMacSystemFont,
+      "San Francisco",
+      "Segoe UI",
+      "Helvetica Neue",
+      "Lucida Grande",
+      sans-serif !important;
+    font-display: swap;
+  }
+}
+
+.bottom {
+  @apply inline-flex;
 }
 
 @screen md {
   .container {
     @apply w-[75%];
-  }
-
-  .top {
-    @apply flex-1
-      mt-0;
   }
 }
 

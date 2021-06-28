@@ -30,7 +30,6 @@ html,
 body,
 [id="__next"] {
   @apply flex
-    flex-col
     h-full
     w-full
     overflow-x-hidden

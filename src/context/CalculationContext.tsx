@@ -1,3 +1,4 @@
+import migrations from "helpers/migration";
 import useTimer from "hooks/useTimer";
 import useWordsPerMinute from "hooks/useWordsPerMinute";
 import randomWords from "random-words";
@@ -5,6 +6,7 @@ import React, { useContext, useMemo, useState } from "react";
 import { useCallback } from "react";
 import { useCookies } from "react-cookie";
 import Highscore from "types/Highscore";
+import MigrationType from "types/MigrationType";
 import Score from "types/Score";
 import { Word } from "types/Word";
 
@@ -67,14 +69,31 @@ export const CalculationContextProvider = (props: Props) => {
       return;
     }
 
-    const scores: Score[] = cookies.scores ?? [];
+    let scores: Record<number, Score[]> = cookies.scores ?? {};
+
+    // Run score migrations
+    migrations[MigrationType.Score].forEach((migration) => {
+      if (!migration.shouldRun(scores)) {
+        return;
+      }
+
+      migration.run(scores, (migratedScores: any) => {
+        setCookie("scores", JSON.stringify(migratedScores), {
+          path: "/",
+          expires: expirationDate,
+        });
+      });
+    });
+
+    // Update scores after running migrations
+    scores = cookies.scores ?? {};
 
     // Only keep the last 10 items in storage
-    if (scores.length >= 10) {
-      scores.pop();
+    if (scores[count]?.length >= 10) {
+      scores[count].pop();
     }
 
-    scores.unshift({
+    scores[count].unshift({
       score,
       count,
       timestamp: new Date().valueOf(),

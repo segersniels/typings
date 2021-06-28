@@ -5,12 +5,12 @@ import useKeyPressed from "hooks/useKeyPressed";
 import React, { useEffect } from "react";
 import { useCallback } from "react";
 
+import Chart from "./Chart";
 import Count from "./Count";
 import Highscore from "./Highscore";
 import styles from "./Home.module.css";
 import Input from "./Input";
 import Overview from "./Overview";
-import Scores from "./Scores";
 
 const Page = () => {
   const {
@@ -94,7 +94,8 @@ const Page = () => {
 
       <Overview />
       <Input />
-      <Scores className={styles.table} />
+
+      <Chart className={styles.chart} />
 
       <Footer />
     </div>

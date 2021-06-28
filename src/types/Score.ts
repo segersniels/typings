@@ -1,6 +1,6 @@
 interface Score {
   score: number;
-  count: number;
+  count?: number;
   timestamp: number;
 }
 
