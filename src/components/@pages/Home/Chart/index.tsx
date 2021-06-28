@@ -15,9 +15,14 @@ const MyChart = (props: Props) => {
         type: "linear",
         position: "bottom",
         id: "Index",
-        stacked: false,
+        showTicks: false,
       },
-      { type: "linear", position: "left", id: "Score", stacked: false },
+      {
+        type: "linear",
+        position: "left",
+        id: "Score",
+        showTicks: false,
+      },
     ],
     []
   );
