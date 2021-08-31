@@ -31,7 +31,7 @@ const MyChart = (props: Props) => {
     () => [
       {
         label: "Score",
-        data: (cookies.scores[count] ?? [])
+        data: (cookies.scores?.[count] ?? [])
           .reverse()
           .map((score, index) => [index + 1, score.score]),
       },
